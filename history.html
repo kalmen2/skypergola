@@ -3,111 +3,127 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>The Timeless Beauty of Pergolas | SkyPergola</title>
+  <title>The Timeless Beauty of Pergolas</title>
 
   <style>
-    /* HEADER + BASIC STYLES */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    :root {
+      --main-color: #1f3b4d;
+      --accent-color: #d4af37;
+      --bg-color: #f5f7fa;
+      --text-color: #333;
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Open Sans', sans-serif;
     }
-    html {
-      font-family: 'Helvetica Neue', sans-serif;
-      scroll-behavior: smooth;
-    }
+
+    @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Playfair+Display:wght@600&display=swap');
+
     body {
-      background: #f5f5f5;
-      color: #333;
-      line-height: 1.7;
+      margin: 0;
+      font-family: var(--font-body);
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      line-height: 1.8;
     }
-    header {
+
+    /* Fixed Responsive Header */
+    header.site-header {
       background: #f2f2f2;
       position: fixed;
       top: 0;
       width: 100%;
       z-index: 1000;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
+      transition: transform 0.3s ease, background-color 0.3s ease;
+    }
+    header.site-header .inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px 20px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 20px 40px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.08);
-      transition: transform 0.3s ease, background-color 0.3s ease;
     }
     .logo {
       font-weight: bold;
       font-size: 1.2rem;
+      color: #1f3b4d;
     }
     nav {
       display: flex;
       align-items: center;
     }
     nav a {
-      margin: 0 10px;
+      margin-left: 20px;
       text-decoration: none;
       color: #333;
       font-size: 1rem;
     }
-    nav a.whatsapp-icon img {
-      width: 20px;
-      height: 20px;
-    }
-    .menu-toggle {
-      display: none;
+    nav a:hover {
+      color: var(--accent-color);
     }
 
-    /* PAGE CONTENT */
-    .page-container {
-      max-width: 960px;
-      margin: 120px auto 40px;
-      padding: 0 20px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.05);
-    }
-    h1 {
-      font-size: 2.5rem;
+    /* Title Header (below fixed nav) */
+    header.page-title {
+      background-color: var(--main-color);
+      color: white;
+      padding: 140px 20px 60px;
       text-align: center;
-      color: #1f3b36;
-      margin: 40px 0 10px;
     }
-    h2 {
-      font-size: 1.6rem;
-      margin-top: 40px;
-      color: #1a73e8;
-      border-left: 4px solid #1a73e8;
-      padding-left: 12px;
+
+    header.page-title h1 {
+      font-family: var(--font-heading);
+      font-size: 2.8em;
+      margin: 0;
+      line-height: 1.2;
     }
-    p {
-      font-size: 1.05rem;
-      margin-top: 15px;
+
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 40px 20px;
     }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    section h2 {
+      font-family: var(--font-heading);
+      font-size: 1.8em;
+      color: var(--accent-color);
+      margin-bottom: 15px;
+      border-left: 5px solid var(--accent-color);
+      padding-left: 15px;
+    }
+
+    section p {
+      font-size: 1.05em;
+      margin-top: 10px;
+    }
+
     .highlight {
-      color: #1f3b36;
+      color: var(--main-color);
       font-weight: bold;
     }
 
-    /* FOOTER */
-    .footer {
-      background-color: #1f3b36;
-      color: white;
+    footer {
+      background-color: #1f3b4d;
+      color: #fff;
       text-align: center;
-      padding: 40px 20px;
-      font-size: 0.9rem;
-      margin-top: 60px;
+      padding: 30px 20px;
+      font-size: 0.9em;
     }
 
-    /* MOBILE STYLES */
     @media (max-width: 768px) {
-      h1 {
-        font-size: 1.8rem;
+      header.page-title h1 {
+        font-size: 2.2em;
       }
-      h2 {
-        font-size: 1.3rem;
+      section h2 {
+        font-size: 1.4em;
       }
-      .page-container {
-        margin: 100px 10px 20px;
-        padding: 20px 15px;
+      nav a {
+        margin-left: 10px;
+        font-size: 0.95rem;
       }
     }
   </style>
@@ -115,7 +131,7 @@
   <script>
     let lastScrollTop = 0;
     window.addEventListener('scroll', function () {
-      const header = document.querySelector('header');
+      const header = document.querySelector('.site-header');
       const st = window.scrollY;
       if (st > lastScrollTop) {
         header.style.transform = 'translateY(-100%)';
@@ -124,54 +140,72 @@
       }
       lastScrollTop = st <= 0 ? 0 : st;
     }, false);
-
-    function toggleMenu() {
-      const header = document.querySelector('header');
-      header.classList.toggle('nav-open');
-    }
   </script>
 </head>
 
 <body>
-  <header>
-    <div class="logo">SKYPERGOLA</div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <nav id="nav-menu">
-      <a href="index.html#home">Home</a>
-      <a href="index.html#contact">Contact</a>
-      <a class="whatsapp-icon" href="https://wa.me/13479800139" target="_blank">
-        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" />
-      </a>
-    </nav>
+
+  <!-- Fixed Header -->
+  <header class="site-header">
+    <div class="inner">
+      <div class="logo">SKYPERGOLA</div>
+      <nav>
+        <a href="index.html#home">Home</a>
+        <a href="index.html#contact">Contact</a>
+        <a href="history.html">Our Story</a>
+        <a href="https://wa.me/13479800139" target="_blank">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp" style="height: 20px;">
+        </a>
+      </nav>
+    </div>
   </header>
 
-  <div class="page-container">
-    <h1>The Timeless Beauty of Pergolas<br> A Journey Through History</h1>
+  <!-- Page Title -->
+  <header class="page-title">
+    <h1>The Timeless Beauty of Pergolas<br />A Journey Through History</h1>
+  </header>
 
-    <p>Pergolas are more than just elegant garden structures. They are a symbol of humanity's connection to nature, culture, and architecture that has evolved over thousands of years. At <span class="highlight">Sky Pergola</span>, we honor this deep-rooted legacy by blending timeless inspiration with modern design. Here is a look at the rich history of pergolas and how they became the iconic outdoor feature we cherish today.</p>
+  <!-- Main Article -->
+  <div class="container">
 
-    <h2>Ancient Beginnings</h2>
-    <p>The story of the pergola begins in <span class="highlight">ancient Egypt</span>, around 1400 BCE. Garden plans from Thebes show early pergola-like structures used to provide shade and support grapevines in elite estates. Soon after, the <span class="highlight">Assyrians</span> and <span class="highlight">Romans</span> embraced similar designs. In ancient <span class="highlight">Rome</span>, pergolas became popular features in courtyards and gardens, used for both shade and beauty. Roman poets wrote about lovers walking under vine-covered arbors—proof of the pergola's romantic charm from the very beginning.</p>
+    <section>
+      <p>Pergolas are more than just elegant garden structures. They are a symbol of humanity's connection to nature, culture, and architecture that has evolved over thousands of years. At <span class="highlight">Sky Pergola</span>, we honor this deep-rooted legacy by blending timeless inspiration with modern design. Here is a look at the rich history of pergolas and how they became the iconic outdoor feature we cherish today.</p>
+    </section>
 
-    <h2>Medieval and Monastic Uses</h2>
-    <p>During the Middle Ages, pergolas served a more practical role. <span class="highlight">Monasteries and castles</span> across Europe built simple wooden trellises to support grapes, providing food and shaded walkways. Though less ornate than their Roman ancestors, these structures were still central in garden life, often found in palace courtyards and monastic cloisters.</p>
+    <section>
+      <h2>Ancient Beginnings</h2>
+      <p>The story of the pergola begins in <span class="highlight">ancient Egypt</span>, around 1400 BCE. Garden plans from Thebes show early pergola-like structures used to provide shade and support grapevines in elite estates. Soon after, the <span class="highlight">Assyrians</span> and <span class="highlight">Romans</span> embraced similar designs. In ancient <span class="highlight">Rome</span>, pergolas became popular features in courtyards and gardens, used for both shade and beauty. Roman poets wrote about lovers walking under vine-covered arbors—proof of the pergola's romantic charm from the very beginning.</p>
+    </section>
 
-    <h2>Renaissance Revival</h2>
-    <p>In the 15th century, <span class="highlight">Renaissance Italy</span> brought pergolas back into the spotlight. Inspired by ancient Rome, architects like Leon Battista Alberti designed long, vine-covered corridors for villas and palaces. These pergolas, made with stone columns and wooden beams, were both functional and artistically stunning. The term "pergola" itself was first recorded during this period.</p>
+    <section>
+      <h2>Medieval and Monastic Uses</h2>
+      <p>During the Middle Ages, pergolas served a more practical role. <span class="highlight">Monasteries and castles</span> across Europe built simple wooden trellises to support grapes, providing food and shaded walkways. Though less ornate than their Roman ancestors, these structures were still central in garden life, often found in palace courtyards and monastic cloisters.</p>
+    </section>
 
-    <h2>18th–19th Century Europe</h2>
-    <p>As garden design evolved, <span class="highlight">French and English landscapes</span> featured pergolas and green tunnels made of pleached trees and climbing plants. Though briefly falling out of fashion during the Romantic era, pergolas came back strong with the <span class="highlight">Victorian</span> and <span class="highlight">Arts & Crafts</span> movements. Designers like <span class="highlight">Gertrude Jekyll</span> and <span class="highlight">Edwin Lutyens</span> used pergolas to create dramatic, flower-draped walkways in English gardens.</p>
+    <section>
+      <h2>Renaissance Revival</h2>
+      <p>In the 15th century, <span class="highlight">Renaissance Italy</span> brought pergolas back into the spotlight. Inspired by ancient Rome, architects like Leon Battista Alberti designed long, vine-covered corridors for villas and palaces. These pergolas, made with stone columns and wooden beams, were both functional and artistically stunning. The term "pergola" itself was first recorded during this period.</p>
+    </section>
 
-    <h2>Modern Innovation</h2>
-    <p>In the <span class="highlight">20th and 21st centuries</span>, pergolas found their way into suburban homes and public parks worldwide. New materials like <span class="highlight">aluminum</span>, <span class="highlight">vinyl</span>, and <span class="highlight">fiberglass</span> made them more durable and accessible. Today’s pergolas are not only stylish but also smart—featuring <span class="highlight">motorized louvers</span>, <span class="highlight">LED lighting</span>, and even <span class="highlight">app-controlled roofs</span> that adjust to the weather.</p>
+    <section>
+      <h2>18th–19th Century Europe</h2>
+      <p>As garden design evolved, <span class="highlight">French and English landscapes</span> featured pergolas and green tunnels made of pleached trees and climbing plants. Though briefly falling out of fashion during the Romantic era, pergolas came back strong with the <span class="highlight">Victorian</span> and <span class="highlight">Arts & Crafts</span> movements. Designers like <span class="highlight">Gertrude Jekyll</span> and <span class="highlight">Edwin Lutyens</span> used pergolas to create dramatic, flower-draped walkways in English gardens.</p>
+    </section>
 
-    <p>At <span class="highlight">Sky Pergola</span>, we bring this ancient tradition into the modern era. Whether you're looking for a cozy backyard retreat or a stunning outdoor statement piece, our pergolas carry forward a legacy of beauty, comfort, and craftsmanship that spans generations.</p>
+    <section>
+      <h2>Modern Innovation</h2>
+      <p>In the <span class="highlight">20th and 21st centuries</span>, pergolas found their way into suburban homes and public parks worldwide. New materials like <span class="highlight">aluminum</span>, <span class="highlight">vinyl</span>, and <span class="highlight">fiberglass</span> made them more durable and accessible. Today’s pergolas are not only stylish but also smart—featuring <span class="highlight">motorized louvers</span>, <span class="highlight">LED lighting</span>, and even <span class="highlight">app-controlled roofs</span> that adjust to the weather.</p>
+      <p>At <span class="highlight">Sky Pergola</span>, we bring this ancient tradition into the modern era. Whether you're looking for a cozy backyard retreat or a stunning outdoor statement piece, our pergolas carry forward a legacy of beauty, comfort, and craftsmanship that spans generations.</p>
+    </section>
 
-    <p><strong>Experience the elegance of history—reimagined for today.</strong></p>
+    <section>
+      <p><strong>Experience the elegance of history—reimagined for today.</strong></p>
+    </section>
+
   </div>
 
-  <div class="footer">
-    &copy; 2025 SkyPergola. All rights reserved.
-  </div>
+  <footer>
+    &copy; 2025 Sky Pergola. All rights reserved.
+  </footer>
 </body>
 </html>
